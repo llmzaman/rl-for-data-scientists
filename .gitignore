@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ML artifacts
+*.pt
+*.pth
+*.safetensors
+checkpoints/
+runs/
+wandb/
+outputs/
+
+# Data
+data/*.csv
+data/*.json
+data/*.sqlite
+
+# Models (large files)
+sql_sft_model/
+sql_ppo_model/
+sql_dpo_model/
+spider/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

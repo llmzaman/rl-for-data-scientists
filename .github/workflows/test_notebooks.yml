@@ -1,0 +1,29 @@
+name: Smoke Test Notebooks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install nbmake pytest numpy matplotlib scipy scikit-learn
+      - name: Run CPU-only notebook smoke tests
+        run: |
+          pytest --nbmake \
+            notebooks/chapter_01_what_is_rl/01_rl_intuition.ipynb \
+            notebooks/chapter_02_prerequisites/02_probability_review.ipynb \
+            notebooks/chapter_03_mdps/03_markov_chains.ipynb \
+            notebooks/chapter_04_policies_values/04_bellman_equations.ipynb \
+            notebooks/chapter_09_bandits_offline/09_mab_thompson_ucb.ipynb \
+            -v --timeout=120
